@@ -91,7 +91,7 @@ class HLSStream:
         self.pipeline = Gst.parse_launch("uridecodebin uri=" + self.src +
                 " name=d ! queue ! x264enc intra-refresh=false aud=1 tune=zerolatency speed-preset=ultrafast key-int-max=90 "
                 "! video/x-h264, profile=high ! queue ! mpegtsmux name=m ! " +
-                "multifilesink location=" + self.dst + ".%05d.ts sync=true next-file=key-unit-event post-messages=true ")
+                "multifilesink location=" + self.dst + ".%05d.ts sync=true next-file=key-unit-event post-messages=true "
                 " d. ! queue ! audioconvert ! audio/x-raw, channels=2 ! voaacenc ! queue ! m.")
 
         self.bus = self.pipeline.get_bus()
